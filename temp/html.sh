@@ -1,0 +1,8 @@
+echo '<html>'
+echo '<head>'
+echo '<title>Temperatures</title>'
+echo '</head>'
+echo '<body>'
+tail /home/pi/temps.txt | sed ':a;N;$!ba;s/\n/<br>/g'
+echo '</body>'
+echo '</html>'
