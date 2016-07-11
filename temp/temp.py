@@ -74,12 +74,18 @@ def read_stream(temperature_function):
 
     while True:
         data, addr = sock.recvfrom(1024)
+        yield data
+
+
+def print_stream(temperature_function):
+    for data in read_stream(temperature_function):
         print(data, end="\r")
 
 ACTIONS = {
     'print': prepare(lambda temp: print(temp)),
     'stream': prepare(Streamer(UDP_IP, UDP_PORT)),
-    'read_stream': read_stream
+    'read_stream': read_stream,
+    'print_stream': print_stream,
 }
 
 if __name__ == '__main__':
