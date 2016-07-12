@@ -122,11 +122,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            "hosts": [(redis_host, 6379)],
         },
         "ROUTING": "core.routing.channel_routing",
     },
