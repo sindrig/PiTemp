@@ -124,7 +124,12 @@ STATIC_URL = '/static/'
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "pitemp.routing.channel_routing",
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "core.routing.channel_routing",
     },
 }
+
+TEMP_GROUP_NAME = 'temps'

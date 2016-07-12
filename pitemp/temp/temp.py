@@ -7,7 +7,7 @@ import random
 import json
 import datetime
 
-from settings import UDP_ADDRESS, DATE_FORMAT
+from .settings import UDP_ADDRESS, DATE_FORMAT
 
 UDP_IP, UDP_PORT = UDP_ADDRESS
 
@@ -66,7 +66,7 @@ class Streamer(object):
         )
 
 
-def read_stream(temperature_function):
+def read_stream(temperature_function=read_temp):
     import socket
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -74,10 +74,10 @@ def read_stream(temperature_function):
 
     while True:
         data, addr = sock.recvfrom(1024)
-        yield data
+        yield data.decode('utf8')
 
 
-def print_stream(temperature_function):
+def print_stream(temperature_function=read_temp):
     for data in read_stream(temperature_function):
         print(data, end="\r")
 
