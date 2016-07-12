@@ -1,0 +1,41 @@
+{
+  "name": "pitemp",
+  "version": "1.0.0",
+  "description": "Show temperatures yeah",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch --progress",
+    "lint": "eslint ./frontend/src",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindrig/PiTemp.git"
+  },
+  "author": "sindrig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sindrig/PiTemp/issues"
+  },
+  "homepage": "https://github.com/sindrig/PiTemp#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.2.4",
+    "moment": "^2.14.1",
+    "react": "~15.0.2",
+    "react-dom": "~15.0.2",
+    "react-websocket": "^1.1.3",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}

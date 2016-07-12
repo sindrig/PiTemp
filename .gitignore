@@ -70,3 +70,9 @@ venv
 /pitemp/db.sqlite3
 
 db.sqlite3
+
+# added by GitSavvy
+/pitemp/core/static/
+
+# added by GitSavvy
+/pitemp/node_modules/
