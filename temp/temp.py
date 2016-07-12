@@ -7,7 +7,7 @@ import random
 import json
 import datetime
 
-from django.conf.settings import UDP_ADDRESS, DATE_FORMAT
+from settings import UDP_ADDRESS, DATE_FORMAT
 
 UDP_IP, UDP_PORT = UDP_ADDRESS
 

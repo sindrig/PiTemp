@@ -122,9 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-UDP_ADDRESS = '127.0.0.1', 5157
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
