@@ -21,8 +21,8 @@ class ProductDetail extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>Temperature: <strong>{this.state.temperature}</strong></div>
+            <div style={{fontSize: '1.5em'}}>
+                <div>Current temperature: <strong>{this.state.temperature}</strong></div>
                 <div>Last temp: {this.state.time}</div>
 
                 <Websocket

@@ -122,11 +122,11 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { style: { fontSize: '1.5em' } },
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    'Temperature: ',
+	                    'Current temperature: ',
 	                    _react2.default.createElement(
 	                        'strong',
 	                        null,
