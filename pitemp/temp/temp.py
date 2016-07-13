@@ -7,7 +7,10 @@ import random
 import json
 import datetime
 
-from .settings import UDP_ADDRESS, DATE_FORMAT
+try:
+    from settings import UDP_ADDRESS, DATE_FORMAT
+except ImportError:
+    from .settings import UDP_ADDRESS, DATE_FORMAT
 
 UDP_IP, UDP_PORT = UDP_ADDRESS
 
