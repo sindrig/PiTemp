@@ -3,7 +3,6 @@ import glob
 import time
 import socket
 import argparse
-import random
 import json
 import datetime
 
@@ -105,6 +104,13 @@ ACTIONS = {
     'print_stream': print_stream,
 }
 
+
+def debug_temperature_function():
+    try:
+        with open('current_temp.txt', 'r') as f:
+            return int(f.read())
+    except Exception:
+        return -1
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get temperatures')
     parser.add_argument('action', choices=ACTIONS)
@@ -113,6 +119,5 @@ if __name__ == '__main__':
     temperature_function = read_temp
     if args.d:
         # DEBUG
-        def temperature_function():
-            return random.random() * 100
+        temperature_function = debug_temperature_function
     ACTIONS[args.action](temperature_function)

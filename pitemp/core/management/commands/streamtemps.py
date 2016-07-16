@@ -1,7 +1,7 @@
 import random
 
 from django.core.management.base import BaseCommand
-from temp.temp import ACTIONS, read_temp
+from temp.temp import ACTIONS, read_temp, debug_temperature_function
 
 
 class Command(BaseCommand):
@@ -12,6 +12,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         temperature_function = read_temp
         if options['d']:
-            def temperature_function():
-                return random.random() * 100
+            temperature_function = debug_temperature_function
         ACTIONS['stream_group'](temperature_function)

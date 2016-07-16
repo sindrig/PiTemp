@@ -1,5 +1,5 @@
-import TempGauge from './TempGauge';
+import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<TempGauge />, document.getElementById('container'));
+ReactDOM.render(<App />, document.getElementById('container'));
