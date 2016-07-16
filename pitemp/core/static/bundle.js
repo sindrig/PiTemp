@@ -116,7 +116,13 @@
 	        value: function handleData(data) {
 	            var result = JSON.parse(data);
 	            result.time = (0, _moment2.default)(result.time, _moment2.default.ISO_8601).format('hh:mm:ss');
-	            var error = this.state.temperature < this.props.minHeat || this.state.temperature > this.props.maxHeat;
+	            var error = false;
+	            if (this.props.minHeat) {
+	                error = this.state.temperature < this.props.minHeat;
+	            }
+	            if (this.props.maxHeat) {
+	                error = error || this.state.temperature > this.props.maxHeat;
+	            }
 	            this.setState(Object.assign({ error: error }, result));
 	            this.props.onChange(result);
 	        }
@@ -168,8 +174,8 @@
 
 	TempGauge.propTypes = {
 	    onChange: _react2.default.PropTypes.func.isRequired,
-	    maxHeat: _react2.default.PropTypes.number.isRequired,
-	    minHeat: _react2.default.PropTypes.number.isRequired,
+	    maxHeat: _react2.default.PropTypes.number,
+	    minHeat: _react2.default.PropTypes.number,
 	    currentHeat: _react2.default.PropTypes.number.isRequired
 	};
 

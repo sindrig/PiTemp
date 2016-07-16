@@ -17,8 +17,13 @@ class TempGauge extends React.Component {
     handleData(data) {
         const result = JSON.parse(data);
         result.time = moment(result.time, moment.ISO_8601).format('hh:mm:ss');
-        const error = this.state.temperature < this.props.minHeat ||
-                      this.state.temperature > this.props.maxHeat;
+        let error = false;
+        if (this.props.minHeat) {
+            error = this.state.temperature < this.props.minHeat;
+        }
+        if (this.props.maxHeat) {
+            error = error || this.state.temperature > this.props.maxHeat;
+        }
         this.setState(Object.assign({error}, result));
         this.props.onChange(result);
     }
@@ -51,8 +56,8 @@ class TempGauge extends React.Component {
 
 TempGauge.propTypes = {
     onChange: React.PropTypes.func.isRequired,
-    maxHeat: React.PropTypes.number.isRequired,
-    minHeat: React.PropTypes.number.isRequired,
+    maxHeat: React.PropTypes.number,
+    minHeat: React.PropTypes.number,
     currentHeat: React.PropTypes.number.isRequired
 };
 
