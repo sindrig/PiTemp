@@ -69,6 +69,19 @@ class Streamer(object):
         )
 
 
+class GroupStreamer(Streamer):
+    def __init__(self):
+        pass
+
+    def prepare(self):
+        from django.conf import settings
+        from channels import Group
+        self.group = Group(settings.TEMP_GROUP_NAME)
+
+    def __call__(self, temperature):
+        self.group.send({'text': self.format(temperature)})
+
+
 def read_stream(temperature_function=read_temp):
     import socket
 
@@ -87,6 +100,7 @@ def print_stream(temperature_function=read_temp):
 ACTIONS = {
     'print': prepare(lambda temp: print(temp)),
     'stream': prepare(Streamer(UDP_IP, UDP_PORT)),
+    'stream_group': prepare(GroupStreamer()),
     'read_stream': read_stream,
     'print_stream': print_stream,
 }

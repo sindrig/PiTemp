@@ -1,14 +1,17 @@
-from django.core.management.base import BaseCommand
+import random
 
-from channels import Group
-from django.conf import settings
-from temp.temp import read_stream
+from django.core.management.base import BaseCommand
+from temp.temp import ACTIONS, read_temp
 
 
 class Command(BaseCommand):
 
+    def add_arguments(self, parser):
+        parser.add_argument('-d', action='store_true', default=False)
+
     def handle(self, *args, **options):
-        t = Group(settings.TEMP_GROUP_NAME)
-        for message in read_stream():
-            t.send({'text': message})
-            print('sent {} to {}'.format(message, settings.TEMP_GROUP_NAME))
+        temperature_function = read_temp
+        if options['d']:
+            def temperature_function():
+                return random.random() * 100
+        ACTIONS['stream_group'](temperature_function)
