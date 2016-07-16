@@ -54921,8 +54921,8 @@
 	                { style: this.style() },
 	                _react2.default.createElement(_TempGauge2.default, _extends({ onChange: this.heatChange }, this.state)),
 	                _react2.default.createElement(_Actions2.default, {
-	                    currentMax: this.state.maxHeat,
-	                    currentMin: this.state.minHeat,
+	                    currentMax: this.state.maxHeat || 0,
+	                    currentMin: this.state.minHeat || 0,
 	                    setMax: this.setMax,
 	                    setMin: this.setMin
 	                })

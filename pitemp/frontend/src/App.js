@@ -45,8 +45,8 @@ export default class App extends React.Component {
             <Panel style={this.style()}>
                 <TempGauge onChange={this.heatChange} {...this.state} />
                 <Actions
-                    currentMax={this.state.maxHeat}
-                    currentMin={this.state.minHeat}
+                    currentMax={this.state.maxHeat || 0}
+                    currentMin={this.state.minHeat || 0}
                     setMax={this.setMax}
                     setMin={this.setMin}
                 />
