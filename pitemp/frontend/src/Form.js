@@ -10,9 +10,7 @@ class NumberInput extends React.Component {
 
     handleChange(event) {
         const value = event.target.value.replace(/(\d+).*/, '$1');
-        if (value) {
-            this.props.onChange(value);
-        }
+        this.props.onChange(value || '');
     }
 
     render() {

@@ -74392,9 +74392,7 @@
 	        key: 'handleChange',
 	        value: function handleChange(event) {
 	            var value = event.target.value.replace(/(\d+).*/, '$1');
-	            if (value) {
-	                this.props.onChange(value);
-	            }
+	            this.props.onChange(value || '');
 	        }
 	    }, {
 	        key: 'render',
